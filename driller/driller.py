@@ -84,7 +84,7 @@ class Driller(object):
 
         # check permissions on the binary to ensure it's executable
         if not os.access(self.binary, os.X_OK):
-            l.error("passed binary file is not executable")
+            l.error("passed binary file %s is not executable" % str(self.binary))
             ret = False
 
         return ret
