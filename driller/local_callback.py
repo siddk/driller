@@ -19,6 +19,7 @@ def _run_drill(drill, fuzz, _path_to_input_to_drill):
         sys.executable, os.path.abspath(__file__),
         _binary_path, _fuzzer_out_dir, _bitmap_path, _path_to_input_to_drill
     )
+    l.warning("Driller args: %s" % str(args))
 
     p = subprocess.Popen(args, stdout=subprocess.PIPE)
     print p.communicate()
@@ -102,6 +103,7 @@ if __name__ == "__main__":
     d = driller.Driller(binary_path, input_to_drill, fuzzer_bitmap)
     count = 0
     for new_input in d.drill_generator():
+        l.warning("New Input found by Driller: %s [Done]" % str(new_input))
         id_num = len(os.listdir(driller_queue_dir))
         fuzzer_from = path_to_input_to_drill.split("sync/")[1].split("/")[0] + path_to_input_to_drill.split("id:")[1].split(",")[0]
         filepath = "id:" + ("%d" % id_num).rjust(6, "0") + ",from:" + fuzzer_from
