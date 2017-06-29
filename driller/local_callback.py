@@ -19,8 +19,6 @@ def _run_drill(drill, fuzz, _path_to_input_to_drill):
         sys.executable, os.path.abspath(__file__),
         _binary_path, _fuzzer_out_dir, _bitmap_path, _path_to_input_to_drill
     )
-    l.warning("Driller args: %s" % str(args))
-
     p = subprocess.Popen(args, stdout=subprocess.PIPE)
     print p.communicate()
 
