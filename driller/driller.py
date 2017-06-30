@@ -1,7 +1,7 @@
 import logging
 
 l = logging.getLogger("driller.Driller")
-l.setLevel(10)
+l.setLevel(logging.DEBUG)
 
 import tracer
 
